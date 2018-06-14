@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+       table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4169E1;
+    color: white;
+}
+
+
+    </style>
+    
+</head>
+
+    <div id="showData"></div>
+</body>
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/chart.min.js"></script>
+	<script src="js/chart-data.js"></script>
+	<script src="js/easypiechart.js"></script>
+	<script src="js/easypiechart-data.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/cookieHandler.js"></script>
+	
+
+
+<script>
+	window.onload = function () {
+	    
+	    
+    function CreateTableFromJSON() {
+    /*    var myBooks = [
+            {
+                "Book ID": "1",
+                "Book Name": "Computer Architecture",
+                "Category": "Computers",
+                "Price": "125.60"
+            },
+            {
+                "Book ID": "2",
+                "Book Name": "Asp.Net 4 Blue Book",
+                "Category": "Programming",
+                "Price": "56.00"
+            },
+            {
+                "Book ID": "3",
+                "Book Name": "Popular Science",
+                "Category": "Science",
+                "Price": "210.40"
+            }
+        ]*/
+        
+       var dadosPaciente = getJSON("https://ptsii.herokuapp.com/pacients/all",function(err, data) {
+             var myBooks= data;
+             console.log(data);
+
+        // EXTRACT VALUE FOR HTML HEADER. 
+        // ('Book ID', 'Book Name', 'Category' and 'Price')
+        var col = [];
+        for (var i = 0; i < myBooks.length; i++) {
+            for (var key in myBooks[i]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
+ 
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
+
+        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+        var tr = table.insertRow(-1);                   // TABLE ROW.
+
+        for (var i = 0; i < col.length - 1; i++) {
+            var th = document.createElement("th");      // TABLE HEADER.
+            th.innerHTML = col[i];
+            tr.appendChild(th);
+        }
+
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < myBooks.length; i++) {
+var no = i + 1;
+            tr = table.insertRow(-1);
+            tr.id = 'row' + no;
+   for (var j = 0; j < col.length - 1; j++) {
+      
+                var tabCell = tr.insertCell(-1);
+              
+       tabCell.id = col[j]+'_row'+ no;
+                tabCell.innerHTML = myBooks[i][col[j]] ;
+             
+            } tabCell = tr.insertCell(-1);
+            j += 1;
+            tabCell.outerHTML = '<td><input type="button" id="edit_button'+no+'" value="Edit" class="edit" onclick="edit_row('+no+')"></td>';
+            
+          //  tabCell.outerHTML = '<input type="button" id="save_button'+t+'" value="Save" class="save" onclick="save_row('+t+')">';
+        }
+        
+         function edit_row(no){
+ document.getElementById("edit_button"+no).style.display="none";
+ document.getElementById("save_button"+no).style.display="block";
+	
+ 
+ var app=document.getElementById("app_row"+no);
+ var _id=document.getElementById("_id_row"+no);
+ var username=document.getElementById("username_row"+no);
+	
+	
+	 var nome=document.getElementById("nome_row"+no);
+ var num_tel=document.getElementById("num_tel_row"+no);
+ var morada=document.getElementById("morada_row"+no);
+	
+	 var email=document.getElementById("email_row"+no);
+ var medicEmail=document.getElementById("medicEmail_row"+no);
+ var utente=document.getElementById("utente_row"+no);
+	 var data_nasc=document.getElementById("data_nasc_row"+no);
+ var benefeciario=document.getElementById("benefeciario_row"+no);
+ 
+	
+	
+
+ var app_data=app.innerHTML;
+  var _id_data=_id.innerHTML;
+ var username_data=username.innerHTML;
+ 
+ var nome_data=nome.innerHTML;
+ var num_tel_data=num_tel.innerHTML;
+ var morada_data=morada.innerHTML;
+	
+	 var email_data=email.innerHTML;
+ var medicEmail_data=medicEmail.innerHTML;
+ var utente_data=utente.innerHTML;
+  var data_nasc_data=data_nasc.innerHTML;
+  var benefeciario_data=benefeciario.innerHTML;
+	
+
+ app.innerHTML="<input type='text' id='app_text"+no+"' value='"+app_data+"'>";
+  _id.innerHTML="<input type='text' id='_id_text"+no+"' value='"+_id_data+"'>";
+ username.innerHTML="<input type='text' id='username_text"+no+"' value='"+username_data+"'>";
+ 
+ 
+ nome.innerHTML="<input type='text' id='nome_text"+no+"' value='"+nome_data+"'>";
+ num_tel.innerHTML="<input type='text' id='num_tel_text"+no+"' value='"+num_tel_data+"'>";
+ morada.innerHTML="<input type='text' id='morada_text"+no+"' value='"+morada_data+"'>";
+ 
+ 
+ email.innerHTML="<input type='text' id='email_text"+no+"' value='"+email_data+"'>";
+ medicEmail.innerHTML="<input type='text' id='medicEmail_text"+no+"' value='"+medicEmail_data+"'>";
+ utente.innerHTML="<input type='text' id='utente_text"+no+"' value='"+utente_data+"'>";
+ 
+ 
+ data_nasc.innerHTML="<input type='text' id='data_nasc_text"+no+"' value='"+data_nasc_data+"'>";
+ benefeciario.innerHTML="<input type='text' id='benefeciario_text"+no+"' value='"+benefeciario_data+"'>";
+ 
+ 
+ 
+}
+
+function save_row(no)
+{
+ 
+ var app_val=document.getElementById("app_text"+no).value;
+ var _id_val=document.getElementById("_id_text"+no).value;
+ var username_val=document.getElementById("username_text"+no).value;
+	
+	 var nome_val=document.getElementById("nome_text"+no).value;
+ var num_tel_val=document.getElementById("num_tel_text"+no).value;
+ var morada_val=document.getElementById("morada_text"+no).value;
+	
+	 var email_val=document.getElementById("email_text"+no).value;
+ var medicEmail_val=document.getElementById("medicEmail_text"+no).value;
+ var utente_val=document.getElementById("utente_text"+no).value;
+	
+	 var data_nasc_val=document.getElementById("data_nasc_text"+no).value;
+ var beneficiario_val=document.getElementById("beneficiario_text"+no).value;
+
+
+document.getElementById("app_row"+no).innerHTML=app_val;
+document.getElementById("_id_row"+no).innerHTML=_id_val;
+document.getElementById("username_row"+no).innerHTML=username_val;
+	
+document.getElementById("nome_row"+no).innerHTML=nome_val;
+document.getElementById("num_tel_row"+no).innerHTML=num_tel_val;
+document.getElementById("morada_row"+no).innerHTML=morada_val;
+	
+document.getElementById("email_row"+no).innerHTML=email_val;
+document.getElementById("medicEmail_row"+no).innerHTML=medicEmail_val;
+document.getElementById("utente_row"+no).innerHTML=utente_val;
+	
+document.getElementById("data_nasc_row"+no).innerHTML=data_nasc_val;
+document.getElementById("beneficiario_row"+no).innerHTML=beneficiario_val;
+
+
+
+
+ document.getElementById("edit_button"+no).style.display="block";
+ document.getElementById("save_button"+no).style.display="none";
+}
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+      /* function save_row(no)
+{
+        var divContainer = document.getElementById("showData");
+        document.getElementById("edit_button"+no).style.display="block";
+        document.getElementById("save_button"+no).style.display="none";
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+    }*/
+ 
+
+
+
+           var divContainer = document.getElementById("showData");
+           divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+       });
+        
+        
+        
+    }
+    
+	    CreateTableFromJSON();
+	}
+</script>
+</html>

@@ -1,0 +1,67 @@
+<table id="addElements" data-height="299">
+    
+</table>
+<a href='#'  >test</a>
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/chart.min.js"></script>
+	<script src="js/chart-data.js"></script>
+	<script src="js/easypiechart.js"></script>
+	<script src="js/easypiechart-data.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/cookieHandler.js"></script>
+    <script src="bootstrap-editable.min.js"></script>
+    <script src="bootstrap-table-all.min.js"></script>
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap-table.min.css"></script>
+    
+<script>
+/*var elementData = [{
+    "id": "1",
+    "element": "c",
+    "weight": "20",
+    "default_thickness": "6"
+}, {
+    "id": "2",
+    "element": "k",
+    "weight": "21",
+    "default_thickness": "2"
+}, {
+    "id": "3",
+    "element": "p",
+    "weight": "18",
+    "default_thickness": "2"
+}];*/
+
+
+
+$//put data in js variable and fill the table
+$(window).bind("load", function() {
+var dadosPaciente = getJSON("https://ptsii.herokuapp.com/pacients/all",function(err, data) {
+             console.log(data);
+             
+    $(function () {
+        $('#addElements').bootstrapTable({
+            data: data
+        });
+    })
+
+
+$.fn.editable.defaults.mode = 'inline';
+        $('a').editable({
+            url: '/post',
+            type: 'text',
+            pk: 1,
+            name: 'parket',
+            title: 'Enter username'
+        });
+    $('td').editable({
+            url: '/post',
+            type: 'text',
+            pk: 1,
+            name: 'parket',
+            title: 'Enter username'
+        });
+});
+</script>

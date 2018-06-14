@@ -1,0 +1,26 @@
+<html>
+    <body>
+   
+    <div id="idd">
+         <h1>Test</h1>
+    <button id="btn" onclick="on()"> TESt</button>
+    
+    </div>
+    
+    
+    
+    
+    
+    <script src="../app.js">
+        function on(){
+var ourRequest = new XMLHttpRequest();
+ourRequest.open("GET", "https://ptsii.herokuapp.com/users/lists",true);
+ourRequest.onload = function(){
+    var ourData = JSON.parse(ourRequest.responseText);
+            var datas = document.getElementById("idd").innerHTML=this.ourData;
+};
+    ourRequest.send();
+};
+    </script>
+   </body> 
+</html>
