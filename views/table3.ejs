@@ -1,7 +1,143 @@
-<table id="addElements" data-height="299">
+<!DOCTYPE html>
+<html>
+<head>
+	    <style>
+       table  {
+       	
+    border-collapse: collapse;
+        width:100%; 
+        table-layout: auto;
+       
     
-</table>
-<a href='#'  >test</a>
+     
+}
+
+th, td {
+    text-align: center;
+    padding: 8px;
+     height: 50px;
+}
+
+tr:nth-child(even){background-color: white}
+
+th {
+	
+    background-color: #30a5ff;
+    color: white;
+}
+
+
+    </style>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pacientes</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/datepicker3.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+	
+	<!--Custom Font-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span></button>
+				<a class="navbar-brand" href="#"><span></span></a>
+				<ul class="nav navbar-top-links navbar-right">
+					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+						<em class="fa fa-envelope"></em><span class="label label-danger">15</span>
+					</a>
+						<ul class="dropdown-menu dropdown-messages">
+							<li>
+								<div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+									<img alt="image" class="img-circle" src="http://placehold.it/40/30a5ff/fff">
+									</a>
+									<div class="message-body"><small class="pull-right">3 mins ago</small>
+										<a href="#"><strong>John Doe</strong> commented on <strong>your photo</strong>.</a>
+									<br /><small class="text-muted">1:24 pm - 25/03/2015</small></div>
+								</div>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<div class="dropdown-messages-box"><a href="profile.html" class="pull-left">
+									<img alt="image" class="img-circle" src="http://placehold.it/40/30a5ff/fff">
+									</a>
+									<div class="message-body"><small class="pull-right">1 hour ago</small>
+										<a href="#">New message from <strong>Jane Doe</strong>.</a>
+									<br /><small class="text-muted">12:27 pm - 25/03/2015</small></div>
+								</div>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<div class="all-button"><a href="#">
+									<em class="fa fa-inbox"></em> <strong>All Messages</strong>
+								</a></div>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+						<em class="fa fa-bell"></em><span class="label label-info">5</span>
+					</a>
+						<ul class="dropdown-menu dropdown-alerts">
+							<li><a href="#">
+								<div><em class="fa fa-envelope"></em> 1 New Message
+									<span class="pull-right text-muted small">3 mins ago</span></div>
+							</a></li>
+							<li class="divider"></li>
+							<li><a href="#">
+								<div><em class="fa fa-heart"></em> 12 New Likes
+									<span class="pull-right text-muted small">4 mins ago</span></div>
+							</a></li>
+							<li class="divider"></li>
+							<li><a href="#">
+								<div><em class="fa fa-user"></em> 5 New Followers
+									<span class="pull-right text-muted small">4 mins ago</span></div>
+							</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<div class="profile-sidebar">
+			<div class="profile-userpic">
+				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
+			</div>
+			<div class="profile-usertitle">
+				<div class="profile-usertitle-name"><%= username %></div>
+				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+
+			    
+	<!--	<div class="divider"></div>
+		<form role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+		</form>-->
+		<ul class="nav menu">
+			<li class="active"><a href="index.html"><em class="fa fa-dashboard">&nbsp;</em> Perfil</a></li>
+		<!--	<li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Registos</a></li>-->
+		<!--	<li><a href="/charts"><em class="fa fa-bar-chart">&nbsp;</em> Gráficos</a></li> -->
+		<!--	<li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>-->
+			<li><a href="/table1"><em class="fa fa-clone">&nbsp;</em> Pacientes</a></li>
+			<li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li></div>
+				<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" class="panel panel-container" 
+				      id="showData"></div>
+		
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/chart.min.js"></script>
@@ -11,57 +147,221 @@
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/custom.js"></script>
 	<script src="js/cookieHandler.js"></script>
-    <script src="bootstrap-editable.min.js"></script>
-    <script src="bootstrap-table-all.min.js"></script>
-    <script src="jquery.min.js"></script>
-    <script src="bootstrap-table.min.css"></script>
-    
+
 <script>
-/*var elementData = [{
-    "id": "1",
-    "element": "c",
-    "weight": "20",
-    "default_thickness": "6"
-}, {
-    "id": "2",
-    "element": "k",
-    "weight": "21",
-    "default_thickness": "2"
-}, {
-    "id": "3",
-    "element": "p",
-    "weight": "18",
-    "default_thickness": "2"
-}];*/
+function edit_row(no){
+ document.getElementById("edit_button"+no).style.display="none";
+ document.getElementById("save_button"+no).style.display="block";
+	
+ 
+ var app=document.getElementById("app_row"+no);
+ var _id=document.getElementById("_id_row"+no);
+ var username=document.getElementById("username_row"+no);
+	
+	
+	 var nome=document.getElementById("nome_row"+no);
+ var num_tel=document.getElementById("num_tel_row"+no);
+ var morada=document.getElementById("morada_row"+no);
+	
+	 var email=document.getElementById("email_row"+no);
+ var medicEmail=document.getElementById("medicEmail_row"+no);
+ var utente=document.getElementById("utente_row"+no);
+	 var data_nasc=document.getElementById("data_nasc_row"+no);
+ var beneficiario=document.getElementById("beneficiario_row"+no);
+
+
+ var app_data= app.innerHTML;
+  var _id_data=_id.innerHTML;
+ var username_data= username.innerHTML;
+ 
+ var nome_data=nome.innerHTML;
+ var num_tel_data=num_tel.innerHTML;
+ var morada_data=morada.innerHTML;
+	
+	 var email_data=email.innerHTML;
+ var medicEmail_data=medicEmail.innerHTML;
+ var utente_data=utente.innerHTML;
+  var data_nasc_data=data_nasc.innerHTML;
+  var beneficiario_data=beneficiario.innerHTML;
+	
+
+ app.innerHTML="<input type='text' id='app_text"+no+"' value='"+app_data+"'>";
+  _id.innerHTML="<input type='text' id='_id_text"+no+"' value='"+_id_data+"'>";
+ username.innerHTML="<input type='text' id='username_text"+no+"' value='"+username_data+"'>";
+ 
+ 
+ nome.innerHTML="<input type='text' id='nome_text"+no+"' value='"+nome_data+"'>";
+ num_tel.innerHTML="<input type='text' id='num_tel_text"+no+"' value='"+num_tel_data+"'>";
+ morada.innerHTML="<input type='text' id='morada_text"+no+"' value='"+morada_data+"'>";
+ 
+ 
+ email.innerHTML="<input type='text' id='email_text"+no+"' value='"+email_data+"'>";
+ medicEmail.innerHTML="<input type='text' id='medicEmail_text"+no+"' value='"+medicEmail_data+"'>";
+ utente.innerHTML="<input type='text' id='utente_text"+no+"' value='"+utente_data+"'>";
+ 
+ 
+ data_nasc.innerHTML="<input type='text' id='data_nasc_text"+no+"' value='"+data_nasc_data+"'>";
+ beneficiario.innerHTML="<input type='text' id='beneficiario_text"+no+"' value='"+beneficiario_data+"'>";
+ 
+ 
+ 
+}
+
+
+function view_row(no){
+
+	
+	 var email=document.getElementById("email_row"+no);
+alert(email.textContent);
+ 
+}
+
+function save_row(no)
+{
+ 
+ var app_val=document.getElementById("app_text"+no).value;
+ var _id_val=document.getElementById("_id_text"+no).value;
+ var username_val=document.getElementById("username_text"+no).value;
+	
+	 var nome_val=document.getElementById("nome_text"+no).value;
+ var num_tel_val=document.getElementById("num_tel_text"+no).value;
+ var morada_val=document.getElementById("morada_text"+no).value;
+	
+	 var email_val=document.getElementById("email_text"+no).value;
+ var medicEmail_val=document.getElementById("medicEmail_text"+no).value;
+ var utente_val=document.getElementById("utente_text"+no).value;
+	
+	 var data_nasc_val=document.getElementById("data_nasc_text"+no).value;
+ var beneficiario_val=document.getElementById("beneficiario_text"+no).value;
+
+
+document.getElementById("app_row"+no).innerHTML=app_val;
+document.getElementById("_id_row"+no).innerHTML=_id_val;
+document.getElementById("username_row"+no).innerHTML=username_val;
+	
+document.getElementById("nome_row"+no).innerHTML=nome_val;
+document.getElementById("num_tel_row"+no).innerHTML=num_tel_val;
+document.getElementById("morada_row"+no).innerHTML=morada_val;
+	
+document.getElementById("email_row"+no).innerHTML=email_val;
+document.getElementById("medicEmail_row"+no).innerHTML=medicEmail_val;
+document.getElementById("utente_row"+no).innerHTML=utente_val;
+	
+document.getElementById("data_nasc_row"+no).innerHTML=data_nasc_val;
+document.getElementById("beneficiario_row"+no).innerHTML=beneficiario_val;
 
 
 
-$//put data in js variable and fill the table
-$(window).bind("load", function() {
-var dadosPaciente = getJSON("https://ptsii.herokuapp.com/pacients/all",function(err, data) {
+
+ document.getElementById("edit_button"+no).style.display="block";
+ document.getElementById("save_button"+no).style.display="none";
+}
+	window.onload = function () {
+	    
+	    
+	    
+    function CreateTableFromJSON() {
+    /*    var myBooks = [
+            {
+                "Book ID": "1",
+                "Book Name": "Computer Architecture",
+                "Category": "Computers",
+                "Price": "125.60"
+            },
+            {
+                "Book ID": "2",
+                "Book Name": "Asp.Net 4 Blue Book",
+                "Category": "Programming",
+                "Price": "56.00"
+            },
+            {
+                "Book ID": "3",
+                "Book Name": "Popular Science",
+                "Category": "Science",
+                "Price": "210.40"
+            }
+        ]*/
+        
+       var dadosPaciente = getJSON("https://ptsii.herokuapp.com/pacients/all",function(err, data) {
+             var myBooks= data;
              console.log(data);
-             
-    $(function () {
-        $('#addElements').bootstrapTable({
-            data: data
-        });
-    })
+
+        // EXTRACT VALUE FOR HTML HEADER. 
+        // ('Book ID', 'Book Name', 'Category' and 'Price')
+        var col = [];
+        for (var i = 0; i < myBooks.length; i++) {
+            for (var key in myBooks[i]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
+ 
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
+
+        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+        var tr = table.insertRow(-1);                   // TABLE ROW.
+
+        for (var i = 0; i < col.length - 1; i++) {
+            var th = document.createElement("th");      // TABLE HEADER.
+            th.innerHTML = col[i];
+            tr.appendChild(th);
+        }
+
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < myBooks.length; i++) {
+var no = i + 1;
+            tr = table.insertRow(-1);
+            tr.id = 'row' + no;
+   for (var j = 0; j < col.length - 1; j++) {
+      
+                var tabCell = tr.insertCell(-1);
+              
+       tabCell.id = col[j]+'_row'+ no;
+                tabCell.innerHTML = myBooks[i][col[j]] ;
+             if(j==6){
+         ref = tabCell.textContent;
+         
+      }
+            } tabCell = tr.insertCell(-1);
+            j += 1;
+            
+             tabCell.outerHTML = '<td><input class="btn btn-primary btn-md"  type="button" id="edit_button'+no+'" value="Edit" class="edit" onclick="edit_row('+no+')"><input class="btn btn-primary btn-md"  type="button" id="save_button'+no+'" value="Save" class="save" onclick="save_row('+no+')"><form action="/charts/'+ref+'" method="GET" ><input class="btn btn-primary btn-md"  type="submit" id="view_button'+no+'" value="View" class="view"  onclick="window.loader.href=/charts/'+ref+'"></form></td>';
+            
+           
+        }
+        
+        
 
 
-$.fn.editable.defaults.mode = 'inline';
-        $('a').editable({
-            url: '/post',
-            type: 'text',
-            pk: 1,
-            name: 'parket',
-            title: 'Enter username'
-        });
-    $('td').editable({
-            url: '/post',
-            type: 'text',
-            pk: 1,
-            name: 'parket',
-            title: 'Enter username'
-        });
-});
-</script>
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+      /* function save_row(no)
+{
+        var divContainer = document.getElementById("showData");
+        document.getElementById("edit_button"+no).style.display="block";
+        document.getElementById("save_button"+no).style.display="none";
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+    }*/
+ 
+
+
+
+           var divContainer = document.getElementById("showData");
+           divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+       });
+        
+        
+        
+    }
+    
+	    CreateTableFromJSON();
+	}
+
+	</script>
+		
+</body>
+</html>

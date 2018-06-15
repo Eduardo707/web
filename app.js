@@ -32,7 +32,7 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-
+var access = '?access_token=';
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
@@ -49,17 +49,19 @@ form: {username: username,
 password: password  }
 };
 
+
+
 request(options, function(err, response, body) {  
 let json= JSON.parse(body);
 //console.log(body);
 
       
-      console.log(body)
+    
       switch(json.msg){
-          case "logged in":
+          case "true":
               return done(null, json.user);
               break;
-      }
+     }
           
       
       
@@ -75,6 +77,13 @@ res.render("login", {page: 'login'});
 app.get("/login", function(req, res){
    
 res.render("login" ); 
+
+});
+
+app.get("/msgEmail", function(req, res){
+   
+res.render("msgEmail" ); 
+
 });
 app.get("/table", function(req, res){
    
@@ -92,12 +101,12 @@ res.render("table2" );
 });
 app.get("/table3", function(req, res){
    
-res.render("table3" ); 
+res.render("table3" , {username: req.user.username}); 
 });
 
 
 app.get("/user", function(req, res){
-    console.log(req.user.token);
+   // console.log(req.user.token);
    res.json({email: req.user.email, token: req.user.token, date: req.user.resetSessionExpires}); 
 });
 
@@ -114,11 +123,83 @@ res.render("forgot", {page: 'forgot'});
 
 
 
-app.get("/charts", function(req, res){
+
+
+
+
+
+    
+
+
+app.get("/charts/:emails", function(req, res){
 //  chart.count1 ;
+//console.log(req.user.token + '666666666666666666666666666666666666666666666666');
+	var minus100 = 0;
+	var minus150 = 0;
+	var above150 = 0;
+	var total = 0;
+	var teal = 0;
+		var orange = 0;
+		var red = 0;
+	var emails= req.params.emails;
+	console.log(emails);
+
+const options= {  
+   
+
+url: 'https://ptsii.herokuapp.com/readings_gli/user' + access + req.user.token ,
+credentials: 'include', 
+method: 'GET',
+headers: {
+'Accept': 'application/json',
+'Accept-Charset': 'utf-8',
+        
+    },
+   form:{ email: emails}
+};
+var nome;
+var email;
+request(options, function(err, response, body) {  
+ 
+let data= JSON.parse(body);
+   
+         var keys = Object.keys(data);
+
+   for ( var i = 0; i < keys.length; i++) {
+		total ++;
+	
+		var paciente = data[keys[i]];
+		
+		nome = paciente.nome;
+		email = paciente.email;
+console.log(paciente.glicemia );
+	if(paciente.glicemia <100){
+		minus100 ++ ;
+	}else if(paciente.glicemia>=100&&paciente.glicemia<150){
+	minus150 ++;
+	}else {
+		above150 ++;}
+       
+       
+     
+   }
+   
+		
+		 teal = Math.ceil((minus100/total)*100);
+		 console.log(minus150  + ' teal');
+
+		
+	 orange = Math.ceil((minus150/total)*100);
+	 console.log(nome + ' orange' );
+	 red = Math.ceil((above150/total)*100);
+	 		res.render('charts',{username: req.user.username, teal: teal , orange : orange, red : red, nome: nome, email: email}); 
+
+});
+    
+
+
 
  
-res.render("charts", {username: req.user.username}); 
 });
 
 
@@ -127,22 +208,56 @@ res.render("charts", {username: req.user.username});
 
 
 
-
-
+var count;
 
 
 app.get("/index",n_pacients,function(req, res){
   // console.log(n_pacients + '/////////////////////////////////////////////');
-res.render("index", {username: req.user.username, number: 0}
+  
+  
+  
+  const options= {  
+   
+
+url: 'https://ptsii.herokuapp.com/medics/user' + access + req.user.token ,
+credentials: 'include',
+method: 'GET',
+headers: {
+'Accept': 'application/json',
+'Accept-Charset': 'utf-8',
+        
+    },
+    form: { email: req.user.email}
+
+    
+};
+
+request(options, function(err, response, body) {  
+let json= JSON.parse(body);
+
+    var keys = Object.keys(json);
+var medic = json[keys[0]];
+   console.log(json);
+   
+res.render("index", {username: req.user.username, nome: medic.nome, number: count,num_tel: medic.num_tel, especialidade: medic.especialidade, morada: medic.morada, email: medic.email, data_nasc: medic.data_nasc, cedula: medic.cedula  }
 ); 
+});
+  
+ 
+  
+
 });
 
 
 
 app.post('/login', passport.authenticate('local'), (req,res) => {
+  //  failureRedirect: '/login';
 
 
 res.redirect('/index');
+
+
+
 });
 
 
@@ -198,8 +313,8 @@ console.log(req.headers.host);
 request(options, function(err, response, body) {  
 let json= JSON.parse(body);
 if(json=="mail sent"){
-console.log(json);
-    res.send('mail enviado');
+
+    res.render('msgEmail');
 }
  
     
@@ -277,10 +392,38 @@ if(json.msg=='reset'){
    res.render("reset", {token: req.params.token}); 
   });
     
+    
+    app.get('/medic/user' , function(req, res){
+
+      
+const options= {  
+   
+
+url: 'https://ptsii.herokuapp.com/medics/user'  + access + req.user.token ,
+credentials: 'include',
+method: 'GET',
+headers: {
+'Accept': 'application/json',
+'Accept-Charset': 'utf-8',
+        
+    },
+form: {email: req.user.email}
+    
+};
+
+request(options, function(err, response, body) {  
+let json= JSON.parse(body);
+   console.log(json);
+
+});
+  });
+    
  
   
-var access = '?access_token=';
-app.get('/paients/user' , function(req, res){
+ 
+  
+
+app.get('/pacients/user' , function(req, res){
 
      
 const options= {  
@@ -333,20 +476,20 @@ res.json(json);
 });
    
     
-app.get('/readings_gli/user' , function(req, res,done){
+app.get('/readings_gli/user/:email' , function(req, res,done){
 
 const options= {  
    
 
 url: 'https://ptsii.herokuapp.com/readings_gli/user' + access + req.user.token ,
-credentials: 'include',
+credentials: 'include', 
 method: 'GET',
 headers: {
 'Accept': 'application/json',
 'Accept-Charset': 'utf-8',
         
     },
-   form:{ email: req.body.email}
+   form:{ email: req.params.email}
 };
 
 request(options, function(err, response, body) {  
@@ -377,8 +520,20 @@ headers: {
 request(options, function(err, response, body) {  
 let json= JSON.parse(body);
 //console.log(json);
- count = Object.keys(json).length ;
-console.log(count);
+ var keys = Object.keys(json) ;
+
+  for ( var i = 0; i < keys.length; i++) {
+	
+		var paciente = json[keys[i]];
+		
+	
+
+	if(paciente.medicEmail == req.user.email){
+		count ++ ;
+	}
+       
+     
+   }
 
  next();
  
@@ -387,7 +542,7 @@ console.log(count);
   
 };
 
-function n_reads_over(req,res,json,next){
+function chart(req,res,emails,next){
     const options= {  
    
 
@@ -399,7 +554,7 @@ headers: {
 'Accept-Charset': 'utf-8',
         
     },
-   form:{ email : req.user.email}
+   form:{ email : emails}
     
 };
 
@@ -415,7 +570,11 @@ return json
 
 
 
+  app.get("/logout", function(req, res){
+   req.logout();
   
+   res.redirect("/login");
+});
 
 module.exports= app;
 app.listen(process.env.PORT || 3000);

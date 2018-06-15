@@ -3,11 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Lumino - Charts</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/font-awesome.min.css" rel="stylesheet">
-	<link href="css/datepicker3.css" rel="stylesheet">
-	<link href="css/styles.css" rel="stylesheet">
+	<title>Gráficos</title>
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<link href="../css/font-awesome.min.css" rel="stylesheet">
+	<link href="../css/datepicker3.css" rel="stylesheet">
+	<link href="../css/styles.css" rel="stylesheet">
 	
 	<!--Custom Font-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -99,11 +99,12 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li><a href="index.html"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-			<li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Registos</a></li>
-			<li class="active"><a href="charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
-			<li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
-			<li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alertas</a></li>
+			<li><a href="/index"><em class="fa fa-dashboard">&nbsp;</em> Perfil</a></li>
+			<!--<li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Registos</a></li>-->
+			<!--<li class="active"><a href=/charts/:emails><em class="fa fa-bar-chart">&nbsp;</em> Gráficos</a></li>-->
+			<li><a href="/table3"><em class="fa fa-clone">&nbsp;</em> Pacientes</a></li>
+		<!--	<li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
+			<li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alertas</a></li> -->
 		<!--	<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
 				<em class="fa fa-navicon">&nbsp;</em> Multilevel <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
@@ -119,7 +120,7 @@
 					</a></li>
 				</ul>
 			</li>-->
-			<li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+			<li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 		
@@ -135,43 +136,46 @@
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Gráficos</h1>
+				<h1 id="nome"><%=nome%></h1>
+								<h2  id="email"><%=email%></h2>
+
 			</div>
 		</div><!--/.row-->
 		
 		<div class="row">
-			<div class="col-xs-6 col-md-3">
+			<div class="col-xs-12 col-md-4">
 				<div class="panel panel-default">
 					<div class="panel-body easypiechart-panel">
-						<div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span></div>
+						<div class="easypiechart" id="easypiechart-teal" data-percent='<%=teal%>'><span class="percent"><%=teal%>%</span></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-6 col-md-3">
+		<!--	<div class="col-xs-6 col-md-3">
 				<div class="panel panel-default">
 					<div class="panel-body easypiechart-panel">
-						<div class="easypiechart" id="easypiechart-blue" data-percent="92" ><span class="percent">92%</span></div>
+						<div class="easypiechart" id="easypiechart-blue" data-percent="92" ><span class="percent"></span></div>
+					</div>
+				</div>
+			</div>-->
+			<div class="col-xs-12 col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-body easypiechart-panel">
+						<div class="easypiechart" id="easypiechart-orange" data-percent=<%=orange%> ><span class="percent"><%=orange%>%</span></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-6 col-md-3">
+			<div class="col-xs-12 col-md-4">
 				<div class="panel panel-default">
 					<div class="panel-body easypiechart-panel">
-						<div class="easypiechart" id="easypiechart-orange" data-percent="65" ><span class="percent">65%</span></div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<div class="easypiechart" id="easypiechart-red" data-percent="27" ><span class="percent">27%</span></div>
+						<div class="easypiechart" id="easypiechart-red" data-percent=<%=red%>><span class="percent"><%=red%>%</span></div>
 					</div>
 				</div>
 			</div>
 		</div><!--/.row-->
 		
-		<div class="row">
-			<div class="col-lg-12">
+	<div class="row">
+			<div class="col-md-8">
+				<div <center></center>
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						Line Chart
@@ -206,9 +210,9 @@
 					</div>
 				</div>
 			</div>
-		</div><!--/.row-->
+		</div><!--/.row -->
 		
-		<div class="row">
+	<!--	<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
@@ -247,7 +251,7 @@
 		</div><!--/.row-->		
 		
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-8">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						Pie Chart
@@ -282,7 +286,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6">
+			<!--<div class="col-md-6">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						Doughnut Chart
@@ -317,7 +321,7 @@
 					</div>
 				</div>
 			</div>
-		</div><!--/.row-->
+		</div><!--/.row
 		
 		<div class="row">
 			<div class="col-md-6">
@@ -354,7 +358,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> 
 			<div class="col-md-6">
 				<div class="panel panel-default">
 					<div class="panel-heading">
@@ -394,18 +398,18 @@
 				<p class="back-link">Lumino Theme by <a href="https://www.medialoot.com">Medialoot</a></p>
 			</div>
 		</div><!--/.row-->
-	</div>	<!--/.main-->
+	</div>	<!--/.main -->
 	  
 
-	<script src="js/jquery-1.11.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/chart.min.js"></script>
-	<script src="js/chart-data.js"></script>
-	<script src="js/easypiechart.js"></script>
-	<script src="js/easypiechart-data.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/custom.js"></script>
-	<script src="js/cookieHandler.js"></script>
+	<script src="../js/jquery-1.11.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/chart.min.js"></script>
+<script src="../js/chart-data.js"></script>
+	<script src="../js/easypiechart.js"></script>
+	<script src="../js/easypiechart-data.js"></script>
+	<script src="../js/bootstrap-datepicker.js"></script>
+	<script src="../js/custom.js"></script>
+	<script src="../js/cookieHandler.js"></script>
 	<script>
 	
 
@@ -429,19 +433,18 @@
     xhr.send();
 };
 var token = getCookie('token');
+ var emails=document.getElementById("email").textContent;
+console.log(emails);
+	
+var dadosPaciente = getJSON("https://web-eduardoferreira.c9users.io/readings_gli/medic",function(err, data) {
 
-var dadosPaciente = getJSON("/readings_gli/medic",function(err, data) {
 
-
-	console.log("o");
-	console.log(data);
 
 	var minus100 = 0;
 	var minus150 = 0;
 	var above150 = 0;
 	var arr = [];
-	
-	
+			
 	/*
 	value: 1,
 				color:"#30a5ff",
@@ -450,15 +453,23 @@ var dadosPaciente = getJSON("/readings_gli/medic",function(err, data) {
 	*/
 	for (object in data) {
 		
-		console.log(data[object])
+		
+	//	console.log(data[object])
 		var paciente = data[object];
+		 
+
+		if(paciente.email ==emails ){
 
 	if(paciente.glicemia <100){
 		minus100 ++ ;
 	}else if(paciente.glicemia>=100&&paciente.glicemia<150){
 	minus150 ++;
 	}else {
-		above150 ++;}}
+		above150 ++;}
+			
+		}
+		
+	}
 	
 	
 	var obj1 = {
@@ -489,7 +500,181 @@ var dadosPaciente = getJSON("/readings_gli/medic",function(err, data) {
 	segmentShowStroke: false
 	});
 
-	var jan = 0;
+     	var jan = 0;
+		var feb = 0;
+		var mar = 0;
+		var abr = 0;
+		var mai = 0;
+		var jun = 0;
+		var jul = 0;
+		var ago = 0;
+		var sep = 0;
+		var out = 0;
+		var nov = 0;
+		var dez = 0;
+		
+		var gli_jan = 0;
+		var gli_feb = 0;
+		var gli_mar = 0;
+		var gli_abr = 0;
+		var gli_mai = 0;
+		var gli_jun = 0;
+		var gli_jul = 0;
+		var gli_ago = 0;
+		var gli_sep = 0;
+		var gli_out = 0;
+		var gli_nov = 0;
+		var gli_dez = 0;
+
+		var m_jan = 0;
+		var m_feb = 0;
+		var m_mar = 0;
+		var m_abr = 0;
+		var m_mai = 0;
+		var m_jun = 0;
+		var m_jul = 0;
+		var m_ago = 0;
+		var m_sep = 0;
+		var m_out = 0;
+		var m_nov = 0;
+		var m_dez = 0;
+		
+	for (object in data) {
+	
+		var glicemia = data[object];
+		var date = glicemia.date_resg;
+		
+      		console.log('+++++++++++++++++++++++++++++++++++++++' +date);
+
+	
+        var then = new Date(date);
+        var month = then.getMonth() + 1;
+      
+	if(glicemia.email == emails){
+		
+		if(month == 1){
+			jan ++;
+			gli_jan += glicemia.glicemia;
+		} else if(month == 2){
+			feb ++;
+						gli_feb += glicemia.glicemia;
+
+		} else if(month == 3){
+			mar ++;
+						gli_mar += glicemia.glicemia;
+
+			
+		} else if(month == 4){
+			abr ++;
+						gli_abr += glicemia.glicemia;
+
+		} else if(month == 5){
+			mai ++;
+						gli_mai += glicemia.glicemia;
+
+		} else if(month == 6){
+			jun ++;
+						gli_jun += glicemia.glicemia;
+
+		} else if(month == 7){
+			jul ++;
+						gli_jul += glicemia.glicemia;
+
+		} else if(month == 8){
+			ago ++;
+						gli_ago += glicemia.glicemia;
+
+		} else if(month == 9){
+			sep ++;
+						gli_sep += glicemia.glicemia;
+
+		} else if(month == 10){
+			out ++;
+						gli_out += glicemia.glicemia;
+
+		} else if(month == 11){
+			nov ++;
+						gli_nov += glicemia.glicemia;
+
+		} else if(month == 12){
+			dez ++;
+						gli_dez += glicemia.glicemia;
+
+		}  
+	
+	}
+
+}
+			
+		
+			  m_jan = Math.ceil(gli_jan/jan);
+						  m_feb = Math.ceil(gli_feb/feb);
+			  m_mar = Math.ceil(gli_mar/mar);
+			  m_abr = Math.ceil(gli_abr/abr);
+			  m_mai = Math.ceil(gli_mai/mai);
+			  m_jun = Math.ceil(gli_jun/jun);
+			  m_jul = Math.ceil(gli_jul/jul);
+m_ago = Math.ceil(gli_ago/ago);
+			  m_sep = Math.ceil(gli_sep/sep);
+			  m_out = Math.ceil(gli_out/out);
+			  m_nov = Math.ceil(gli_nov/nov);
+			  m_dez = Math.ceil(gli_dez/dez);
+			  
+			  if(isNaN(m_jan)==true){
+			  	m_jan=0;
+			  }if(isNaN(m_feb)==true){
+			  		m_feb=0;
+			  }if(isNaN(m_mar)==true){	m_mar=0;
+			  }if(isNaN(m_abr)==true){	m_abr=0;
+			  }if(isNaN(m_mai)==true){	m_mai=0;
+			  }if(isNaN(m_jun)==true){	m_jun=0;
+			  }if(isNaN(m_jul)==true){	m_jul=0;
+			  }if(isNaN(m_ago)==true){	m_ago=0;
+			  }if(isNaN(m_sep)==true){	m_sep=0;
+			  }if(isNaN(m_out)==true){	m_out=0;
+			  }if(isNaN(m_nov)==true){	m_nov=0;
+			  }if(isNaN(m_dez)==true){	m_dez=0;}
+			 
+	
+		console.log(m_jan + '    --------//////////////////////////////////////////');
+	
+	var lineChartData = {
+		labels : ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto", "Setembro", "Outubro","Novembro","Dezembro"],
+		datasets : [
+			{
+				label: "Glicemia",
+				fillColor : "rgba(48, 164, 255, 0.2)",
+				strokeColor : "rgba(48, 164, 255, 1)",
+				pointColor : "rgba(48, 164, 255, 1)",
+				pointStrokeColor : "#fff",
+				pointHighlightFill : "#fff",
+				pointHighlightStroke : "rgba(48, 164, 255, 1)",
+				data : [m_jan,m_feb,m_mar,m_abr,m_mai,m_jun,m_jul,m_ago,m_sep,m_out,m_nov,m_dez]
+			}
+		]
+
+	}
+	
+
+	var chart1 = document.getElementById("line-chart").getContext("2d");
+	window.myLine = new Chart(chart1).Line(lineChartData, {
+	responsive: true,
+	scaleLineColor: "rgba(0,0,0,.2)",
+	scaleGridLineColor: "rgba(0,0,0,.05)",
+	scaleFontColor: "#c5c7cc"
+	});
+});
+		
+	
+//<	text.outerHTML = '<div class="easypiechart" id="easypiechart-teal" data-percent="'+o+'"><span class="percent">'+o+'%</span><canvas height="123" width="123" style="height: 110px; width: 110px;"></canvas></div>';
+	//	alert(text.textContent);
+
+
+	
+	
+/*	var dadosLeituras = getJSON("/readings_gli/medic",function(err, data) {
+	
+		var jan = 0;
 		var feb = 0;
 		var mar = 0;
 		var abr = 0;
@@ -503,15 +688,12 @@ var dadosPaciente = getJSON("/readings_gli/medic",function(err, data) {
 		var dez = 0;
 
 	for (object in data) {
-		
 	
-		var glicemia = data[object];
-		var date = glicemia.date_resg;
-		
-var then = new Date(date);
-var month = then.getMonth() + 1;
 	
-		
+		var ritmo = data[object];
+		var date2 = ritmo.date_resg;
+	var then2 = new Date(date2);
+        var month2 = then.getMonth() + 1;
 		if(month == 1){
 			jan ++;
 		} else if(month == 2){
@@ -539,15 +721,8 @@ var month = then.getMonth() + 1;
 			dez ++;
 		}  
 	
-		
-		
-		
-		
-
-}
-
-	
-	var lineChartData = {
+	}
+	var barChartData = {
 		labels : ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto", "Setembro", "Outubro","Novembro","Dezembro"],
 		datasets : [
 			{
@@ -563,17 +738,6 @@ var month = then.getMonth() + 1;
 		]
 
 	}
-
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-});
-		
-
 	var chart2 = document.getElementById("bar-chart").getContext("2d");
 	window.myBar = new Chart(chart2).Bar(barChartData, {
 	responsive: true,
@@ -583,25 +747,13 @@ var month = then.getMonth() + 1;
 	});
 	
 	
-	var chart3 = document.getElementById("doughnut-chart").getContext("2d");
-	window.myDoughnut = new Chart(chart3).Doughnut(doughnutData, {
-	responsive: true,
-	segmentShowStroke: false
-	});
-
-	var chart5 = document.getElementById("radar-chart").getContext("2d");
-	window.myRadarChart = new Chart(chart5).Radar(radarData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.05)",
-	angleLineColor: "rgba(0,0,0,.2)"
-	});
-	var chart6 = document.getElementById("polar-area-chart").getContext("2d");
-	window.myPolarAreaChart = new Chart(chart6).PolarArea(polarData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	segmentShowStroke: false
-	});
-};
+	
+	
+	
+	
+	);*/
+	
+}; 
 	</script>	
 </body>
 </html>

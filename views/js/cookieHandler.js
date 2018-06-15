@@ -22,7 +22,7 @@
 function lerDadosLogin(err, data) {
     
     var token = data.token;
-    console.log(token + '-111111111111111111111111111');
+ //   console.log(token + '-111111111111111111111111111');
     return token;
     }
 
@@ -31,7 +31,7 @@ function lerDadosLogin(err, data) {
 function fetchLoginData(){
     var result = getJSON("/user", function(err,data) {
     	
-    	console.log(data.token);
+  //  	console.log(data.token);
     	return result;
     });
 }

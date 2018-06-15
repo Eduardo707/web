@@ -1,9 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
+	    <style>
+       table  {
+       	
+    border-collapse: collapse;
+       
+        table-layout: auto;
+        
+    
+     
+}
+
+th, td, {
+    text-align: center;
+    padding: 100px;
+    width:"150";
+    height:"100";
+}
+
+tr:nth-child(even){background-color: white}
+
+th {
+	
+    background-color: #30a5ff;
+    color: white;
+}
+
+
+    </style>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Lumino - Dashboard</title>
+	<title>Perfil</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
@@ -24,7 +52,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
-				<a class="navbar-brand" href="#"><span>Lumino</span>Admin</a>
+				<a class="navbar-brand" href="#"><span></span></a>
 				<ul class="nav navbar-top-links navbar-right">
 					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
 						<em class="fa fa-envelope"></em><span class="label label-danger">15</span>
@@ -92,36 +120,25 @@
 			</div>
 			<div class="clear"></div>
 		</div>
-		<div class="divider"></div>
+		
+
+			    
+	<!--	<div class="divider"></div>
 		<form role="search">
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Search">
 			</div>
-		</form>
+		</form>-->
 		<ul class="nav menu">
-			<li class="active"><a href="index.html"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-			<li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Registos</a></li>
-			<li><a href="charts.ejs"><em class="fa fa-bar-chart">&nbsp;</em> Gráficos</a></li>
-			<li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
-			<li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alertas</a></li>
-		<!--	<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-				<em class="fa fa-navicon">&nbsp;</em> Multilevel <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
-				</a>
-				<ul class="children collapse" id="sub-item-1">
-					<li><a class="" href="#">
-						<span class="fa fa-arrow-right">&nbsp;</span> Sub Item 1
-					</a></li>
-					<li><a class="" href="#">
-						<span class="fa fa-arrow-right">&nbsp;</span> Sub Item 2
-					</a></li>
-					<li><a class="" href="#">
-						<span class="fa fa-arrow-right">&nbsp;</span> Sub Item 3
-					</a></li>
-				</ul>
-			</li>-->
-			<li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
-		</ul>
-	</div><!--/.sidebar-->
+			<li class="active"><a href="/index"><em class="fa fa-dashboard">&nbsp;</em> Perfil</a></li>
+			<!--<li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Registos</a></li>-->
+			<!--<li><a href="/charts"><em class="fa fa-bar-chart">&nbsp;</em> Gráficos</a></li>-->
+		<!--	<li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>-->
+			<li><a href="/table3"><em class="fa fa-clone">&nbsp;</em> Pacientes</a></li>
+			<li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li></div>
+				<div class="panel panel-container" 
+				      id="showData"></div>
+		
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
@@ -129,19 +146,19 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Dashboard</li>
+			
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Dashboard</h1>
+				<h1 class="page-header">Perfil</h1>
 			</div>
 		</div><!--/.row-->
 		
 		<div class="panel panel-container">
 			<div class="row">
-				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+				<div class="col-xs-6 col-md-12 col-lg-12 no-padding">
 					<div class="panel panel-teal panel-widget border-right">
 						<div class="row no-padding"><em class="fa fa-xl fa-users color-teal
 						"></em>
@@ -150,7 +167,7 @@
 						</div>
 					</div>
 				</div>
-			<	<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+			<!--	<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 					<div class="panel panel-blue panel-widget border-right">
 						<div class="row no-padding"><em class="fa fa-xl fa-comments color-orange"></em>
 							<div class="large">52</div>
@@ -174,7 +191,7 @@
 						</div>
 					</div>
 				</div>
-			</div><!--/.row-->
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
@@ -212,7 +229,7 @@
 					</div>
 				</div>
 			</div>
-		</div><!--/.row-->
+		</div>
 		
 		<div class="row">
 			<div class="col-xs-6 col-md-3">
@@ -247,7 +264,7 @@
 					</div>
 				</div>
 			</div>
-		</div><!--/.row-->
+		</div>
 		
 		<div class="row">
 			<div class="col-md-6">
@@ -339,75 +356,52 @@
 								</ul>
 							</li>
 						</ul>
-						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
-					<div class="panel-body">
+						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div> -->
+				<div class="panel-body">
 						<ul class="todo-list">
 							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox-1" />
-									<label for="checkbox-1">Make coffee</label>
-								</div>
-								<div class="pull-right action-buttons"><a href="#" class="trash">
-									<em class="fa fa-trash"></em>
-								</a></div>
+							
+									<td> Nome:  <center><%= nome %></center></td>
+							
 							</li>
 							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox-2" />
-									<label for="checkbox-2">Check emails</label>
-								</div>
-								<div class="pull-right action-buttons"><a href="#" class="trash">
-									<em class="fa fa-trash"></em>
-								</a></div>
+					
+					<td> Data de Nascimento:  <center><%= data_nasc %></center> 
+								 </td></tr>
+							
 							</li>
 							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox-3" />
-									<label for="checkbox-3">Reply to Jane</label>
-								</div>
-								<div class="pull-right action-buttons"><a href="#" class="trash">
-									<em class="fa fa-trash"></em>
-								</a></div>
+									<td> Numero telemovel:  <center id="num_tel_row1"><%= num_tel %></center> </td>
+							
+						
 							</li>
 							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox-4" />
-									<label for="checkbox-4">Make more coffee</label>
-								</div>
-								<div class="pull-right action-buttons"><a href="#" class="trash">
-									<em class="fa fa-trash"></em>
-								</a></div>
+									<td> Especialidade:  <center><%= especialidade %></center> </td>
+							
+							</li>
+									<li class="todo-list-item">
+										<td> Morada:  <center id="morada_row1"><%= morada %></center> </td>
+										
 							</li>
 							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox-5" />
-									<label for="checkbox-5">Work on the new design</label>
-								</div>
-								<div class="pull-right action-buttons"><a href="#" class="trash">
-									<em class="fa fa-trash"></em>
-								</a></div>
+								
+									<td> E-mail:  <center><%= email %></center> </td>
 							</li>
-							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox-6" />
-									<label for="checkbox-6">Get feedback on design</label>
-								</div>
-								<div class="pull-right action-buttons"><a href="#" class="trash">
-									<em class="fa fa-trash"></em>
-								</a></div>
+								<li class="todo-list-item">
+								
+									<td> Cédula:  <center><%= cedula %></center> </td>	
 							</li>
-						</ul>
-					</div>
 					<div class="panel-footer">
 						<div class="input-group">
-							<input id="btn-input" type="text" class="form-control input-md" placeholder="Add new task" /><span class="input-group-btn">
-								<button class="btn btn-primary btn-md" id="btn-todo">Add</button>
+							<input id="btn-input" type="text" class="form-control input-md" placeholder="Type your notes here..." /><span class="input-group-btn">
+								<button class="btn btn-primary btn-md" id="btn-chat" onclick="edit_row(1)">Editar</button>
+									<button class="btn btn-primary btn-md" id="btn-chat" onclick="save_row(1)">Guardar</button>
 						</span></div>
+						</ul>
 					</div>
-				</div>
-			</div><!--/.col-->
-			
-			
+				
+				
+			<!--
 			<div class="col-md-6">
 				<div class="panel panel-default ">
 					<div class="panel-heading">
@@ -485,12 +479,10 @@
 						</ul>
 					</div>
 				</div>
-			</div><!--/.col-->
-			<div class="col-sm-12">
-				<p class="back-link">Lumino Theme by <a href="https://www.medialoot.com">Medialoot</a></p>
-			</div>
+			</div>-->
+			
 		</div><!--/.row-->
-	</div>	<!--/.main-->
+	</div>	<!--/.main--> 
 	
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -502,16 +494,42 @@
 	<script src="js/custom.js"></script>
 	<script src="js/cookieHandler.js"></script>
 
-	<script>
+<script>
+
+ function edit_row(no){
+/* document.getElementById("edit_button"+no).style.display="none";
+ document.getElementById("save_button"+no).style.display="block";*/
+	
+ 
+ var num_tel=document.getElementById("num_tel_row"+no);
+var morada=document.getElementById("morada_row"+no);
+// var email=document.getElementById("email_row"+no);
+  var num_tel_data=num_tel.innerHTML;
+ var morada_data=morada.innerHTML;
+ 
+  num_tel.innerHTML="<input type='text' id='num_tel_text"+no+"' value='"+num_tel_data+"'>";
+  morada.innerHTML="<input type='text' id='morada_text"+no+"' value='"+morada_data+"'>";
+ //email.innerHTML="<input type='text' id='email_text"+no+"' value='"+email_data+"'>";
+
+}
+function save_row(no)
+{
+ 
+ var num_tel_val=document.getElementById("num_tel_text"+no).value;
+ var morada_val=document.getElementById("morada_text"+no).value;
+// var email_val=document.getElementById("email_text"+no).value;
+ 
+ document.getElementById("num_tel_row"+no).innerHTML=num_tel_val;
+document.getElementById("morada_row"+no).innerHTML=morada_val;
+//document.getElementById("email_row"+no).innerHTML=email_val;
+
+ /*document.getElementById("edit_button"+no).style.display="block";
+ document.getElementById("save_button"+no).style.display="none";
+ */
+ }
 		window.onload = function () {
 
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
+
 
 		
 		
@@ -520,7 +538,7 @@
 function lerDadosLogin(err, data) {
     
     var token = data.token;
-    console.log(token + '-111111111111111111111111111');
+  //  console.log(token + '-111111111111111111111111111');
     return token;
     }
 
@@ -536,11 +554,18 @@ function fetchLoginData(){
     });
 }
 fetchLoginData();
-}
- 
+
  
 
 
+        
+    
+    
+	   
+	}
+
+    
+               
 	</script>
 		
 </body>
