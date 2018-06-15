@@ -131,7 +131,7 @@ th {
 		</form>-->
 		<ul class="nav menu">
 			<li class="active"><a href="/index"><em class="fa fa-dashboard">&nbsp;</em> Perfil</a></li>
-			<!--<li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Registos</a></li>-->
+			<li><a href="/registo"><em class="fa fa-calendar">&nbsp;</em> Registos</a></li>
 			<!--<li><a href="/charts"><em class="fa fa-bar-chart">&nbsp;</em> Gráficos</a></li>-->
 		<!--	<li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>-->
 			<li><a href="/table3"><em class="fa fa-clone">&nbsp;</em> Pacientes</a></li>
@@ -496,6 +496,7 @@ th {
 
 <script>
 
+
  function edit_row(no){
 /* document.getElementById("edit_button"+no).style.display="none";
  document.getElementById("save_button"+no).style.display="block";*/
@@ -510,6 +511,11 @@ var morada=document.getElementById("morada_row"+no);
   num_tel.innerHTML="<input type='text' id='num_tel_text"+no+"' value='"+num_tel_data+"'>";
   morada.innerHTML="<input type='text' id='morada_text"+no+"' value='"+morada_data+"'>";
  //email.innerHTML="<input type='text' id='email_text"+no+"' value='"+email_data+"'>";
+ 
+ 
+ 
+ 
+ 
 
 }
 function save_row(no)
@@ -526,6 +532,9 @@ document.getElementById("morada_row"+no).innerHTML=morada_val;
  /*document.getElementById("edit_button"+no).style.display="block";
  document.getElementById("save_button"+no).style.display="none";
  */
+ 
+ 
+ 
  }
 		window.onload = function () {
 

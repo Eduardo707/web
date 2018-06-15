@@ -133,7 +133,7 @@ th {
 		<!--	<li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Registos</a></li>-->
 		<!--	<li><a href="/charts"><em class="fa fa-bar-chart">&nbsp;</em> Gráficos</a></li> -->
 		<!--	<li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>-->
-			<li><a href="/table1"><em class="fa fa-clone">&nbsp;</em> Pacientes</a></li>
+		<!--	<li><a href="/table1"><em class="fa fa-clone">&nbsp;</em> Pacientes</a></li>-->
 			<li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li></div>
 				<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" class="panel panel-container" 
 				      id="showData"></div>
@@ -284,7 +284,7 @@ document.getElementById("beneficiario_row"+no).innerHTML=beneficiario_val;
         
        var dadosPaciente = getJSON("https://ptsii.herokuapp.com/pacients/all",function(err, data) {
              var myBooks= data;
-             console.log(data);
+             console.log(data + '//////////////////////////////////////////');
 
         // EXTRACT VALUE FOR HTML HEADER. 
         // ('Book ID', 'Book Name', 'Category' and 'Price')

@@ -95,9 +95,9 @@ app.get("/table1", function(req, res){
 res.render("table1" ); 
 });
 
-app.get("/table2", function(req, res){
+app.get("/registo", function(req, res){
    
-res.render("table2" ); 
+res.render("registo", {username: req.user.username} ); 
 });
 app.get("/table3", function(req, res){
    
@@ -208,7 +208,7 @@ console.log(paciente.glicemia );
 
 
 
-var count;
+var count = 0;
 
 
 app.get("/index",n_pacients,function(req, res){
@@ -505,14 +505,14 @@ function n_pacients(req,res,next){
     const options= {  
    
 
-url: 'https://ptsii.herokuapp.com/pacients/all' ,
+url: 'https://ptsii.herokuapp.com/pacients/all' + access +  req.user.token ,
 credentials: 'include',
 method: 'GET',
 headers: {
 'Accept': 'application/json',
 'Accept-Charset': 'utf-8',
         
-    }//,
+    }
  //  form:{ medicEmail : req.user.email}
     
 };
@@ -530,6 +530,7 @@ let json= JSON.parse(body);
 
 	if(paciente.medicEmail == req.user.email){
 		count ++ ;
+		console.log(count);
 	}
        
      
@@ -537,7 +538,7 @@ let json= JSON.parse(body);
 
  next();
  
-
+console.log(count);
 });
   
 };
@@ -576,6 +577,37 @@ return json
    res.redirect("/login");
 });
 
+
+
+
+
+
+/*app.post('/medics/:id', function(req, res) {
+      const options= {  
+    
+url: 'https://ptsii.herokuapp.com/medics/:id'  ,
+method: 'POST',
+headers: {
+'Accept': 'application/json',
+'Accept-Charset': 'utf-8',
+        
+    },
+form: {_id : req.user._id}
+};
+
+request(options, function(err, response, body) {  
+let json= JSON.parse(body);
+
+ if (json== "user registered"){
+res.redirect('/login');
+ } else{
+     
+ }
+    
+    
+    
+});
+  });*/
 module.exports= app;
 app.listen(process.env.PORT || 3000);
 
