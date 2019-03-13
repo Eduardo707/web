@@ -1,7 +1,7 @@
 	  </style>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Perfil</title>
+	<title>Registos</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
@@ -15,7 +15,7 @@
 	<![endif]-->
 </head>
 <body>
-	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+<!--<	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
@@ -77,8 +77,8 @@
 					</li>
 				</ul>
 			</div>
-		</div><!-- /.container-fluid -->
-	</nav>
+		</div><!-- /.container-fluid 
+	</nav>-->
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<div class="profile-sidebar">
 			<div class="profile-userpic">
@@ -127,12 +127,29 @@
 		</div><!--/.row-->
 	
 	
-	
+								 <form action="/post_registo" method="POST">
 	<div class="panel-body">
 						<ul class="todo-list">
 							<li class="todo-list-item">
+
+								<td> Nome: 	 <input type="text" name="nome" id="nome" placeholder="nome">
+							</td></tr>
+							</li>
 							
-									<td> Nome:  <input type="text" name="nome" id="nome" placeholder="nome"></td>
+							
+							<li class="todo-list-item">
+					
+					<td> Username:   <input type="text"  name="username" id="username" placeholder="username">
+								 </td></tr>
+							
+							</li>
+							
+							
+								<li class="todo-list-item">
+					
+					<td> Passoword:   <input type="text"  name="pwd" id="pwd" placeholder="Password">
+								 </td> <button type="button" value="Gerar password" name="btn" onclick="makeid()"  class="btn btn-primary btn-md"></button>
+								 </tr>
 							
 							</li>
 							<li class="todo-list-item">
@@ -150,6 +167,11 @@
 									<td> Morada:   <input type="text" name="morada"  id="morada" placeholder="morada"> </td>
 							
 							</li>
+							<li class="todo-list-item">
+									<td>Contacto telefónico:   <input type="text" name="num_tel" id="num_tel" placeholder="(+351) 222222222"> </td>
+							
+						
+							</li>
 									<li class="todo-list-item">
 										<td> Data de Nascimento:   <input type="text"  name="data_nasc"  id="data_nasc" placeholder="data de nascimento"> </td>
 										
@@ -163,10 +185,11 @@
 									<td> Numero utente de saúde:  <input type="text" name="utente" id="utente"  placeholder="numero de utente"> </td>	
 							</li>
 				
-									<button class="btn btn-primary btn-md" id="btn-chat" onclick="register()">Guardar</button>
+									<input type="submit" class="btn btn-primary btn-md" id="btn-chat" ></input>
+								
 						</span></div>
 						</ul>
-					</div>
+					</div>	</form>
  
      
      
@@ -176,34 +199,19 @@
 </div></div>
 	<script src="js/cookieHandler.js"></script>
 <script>
+function makeid() {
+    var password = document.getElementById('pwd');
+    
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+  for (var i = 0; i < 5; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
 
 
-var token = getCookie('token');
-    function register(){
-        var url = "https://ptsii.herokuapp.com/pacients/new?access_token=" + token ;
 
-var data = {};
-data.nome = document.getElementById('nome').textContent;
-data.email = document.getElementById('email').textContent;
-data.medicEmail = document.getElementById('nome').textContent;
-data.morada = document.getElementById('morada').textContent;
-data.beneficiario = document.getElementById('beneficiario').textContent;
-data.utente = document.getElementById('utente').textContent;
-
-var json = JSON.stringify(data);
-
-var xhr = new XMLHttpRequest();
-xhr.open("POST", url, true);
-xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
-xhr.onload = function () {
-	var users = JSON.parse(xhr.responseText);
-	if (xhr.readyState == 4 && xhr.status == "201") {
-		console.table(users);
-	} else {
-		console.error(users);
-	}
+password.value = text;
+  return text;
+  
 }
-xhr.send(json);
-
-    }
 </script>

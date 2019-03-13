@@ -12,6 +12,11 @@ var bodyParser= require('body-parser');
 var path= require('path');
 var LocalStrategy = require('passport-local').Strategy;
 
+
+
+
+
+
 app.use(express.static(path.resolve(__dirname, 'views')));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -63,7 +68,7 @@ let json= JSON.parse(body);
               break;
      }
           
-      
+     console.log(json.user+ '11111111111');
       
     });
   }
@@ -97,7 +102,7 @@ res.render("table1" );
 
 app.get("/registo", function(req, res){
    
-res.render("registo", {username: req.user.username} ); 
+res.render("registo", {username: req.user.username}); 
 });
 app.get("/table3", function(req, res){
    
@@ -107,7 +112,7 @@ res.render("table3" , {username: req.user.username});
 
 app.get("/user", function(req, res){
    // console.log(req.user.token);
-   res.json({email: req.user.email, token: req.user.token, date: req.user.resetSessionExpires}); 
+   res.json({username: req.user.username, token: req.user.token, date: req.user.resetSessionExpires}); 
 });
 
 
@@ -212,7 +217,7 @@ var count = 0;
 
 
 app.get("/index",n_pacients,function(req, res){
-  // console.log(n_pacients + '/////////////////////////////////////////////');
+   console.log(req.user.username + '/////////////////////////////////////////////');
   
   
   
@@ -227,7 +232,7 @@ headers: {
 'Accept-Charset': 'utf-8',
         
     },
-    form: { email: req.user.email}
+    form: { email: req.user.username}
 
     
 };
@@ -241,7 +246,7 @@ var medic = json[keys[0]];
    
 res.render("index", {username: req.user.username, nome: medic.nome, number: count,num_tel: medic.num_tel, especialidade: medic.especialidade, morada: medic.morada, email: medic.email, data_nasc: medic.data_nasc, cedula: medic.cedula  }
 ); 
-});
+count = 0;});
   
  
   
@@ -358,6 +363,49 @@ if(json=='reset successfull'){
 });
   });
   
+  
+       app.post('/post_registo', function(req, res) {  
+           console.log(req.params.token);
+      const options= {  
+    
+url: 'https://ptsii.herokuapp.com/pacients/new' + access + req.user.token ,
+
+method: 'POST',
+
+headers: {
+'Accept': 'application/json',
+'Accept-Charset': 'utf-8',
+        
+    },
+form: {
+    
+email: req.body.email,
+medicEmail: req.body.medicEmail,
+nome: req.body.nome,
+username:req.body.username,
+morada: req.body.morada,
+num_tel: req.body.num_tel,
+password: req.body.pwd,
+data_nasc: req.body.data_nasc,
+beneficiario: req.body.beneficiario,
+utente: req.body.utente,
+app: 'true'
+
+    }
+};
+
+request(options, function(err, response, body) {  
+let json= JSON.parse(body);
+console.log(json);
+if(json=='sucesso'){
+    res.render('registo', {username: req.user.username, alerta: 'Registo efetuado com sucesso'});
+}
+ 
+    
+    
+    
+});
+  });
   
   app.get('/reset/:token' , function(req, res){
 console.log(req.params.token + '////////////////');
@@ -609,7 +657,7 @@ res.redirect('/login');
 });
   });*/
 module.exports= app;
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT  || 3000);
 
 
 

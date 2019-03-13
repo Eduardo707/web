@@ -17,7 +17,7 @@
 	<![endif]-->
 </head>
 <body>
-	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+<!--	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
@@ -79,8 +79,8 @@
 					</li>
 				</ul>
 			</div>
-		</div><!-- /.container-fluid -->
-	</nav>
+		</div><!-- /.container-fluid 
+	</nav>-->
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<div class="profile-sidebar">
 			<div class="profile-userpic">
@@ -145,6 +145,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-md-4">
 				<div class="panel panel-default">
+					Percentagem do número de registos com o valor de glicemia abaixo dos 100
 					<div class="panel-body easypiechart-panel">
 						<div class="easypiechart" id="easypiechart-teal" data-percent='<%=teal%>'><span class="percent"><%=teal%>%</span></div>
 					</div>
@@ -159,6 +160,7 @@
 			</div>-->
 			<div class="col-xs-12 col-md-4">
 				<div class="panel panel-default">
+						Percentagem do número de registos com o valor de glicemia entre os 100 a 150
 					<div class="panel-body easypiechart-panel">
 						<div class="easypiechart" id="easypiechart-orange" data-percent=<%=orange%> ><span class="percent"><%=orange%>%</span></div>
 					</div>
@@ -166,6 +168,7 @@
 			</div>
 			<div class="col-xs-12 col-md-4">
 				<div class="panel panel-default">
+						Percentagem do número de registos com o valor de glicemia acima dos 150
 					<div class="panel-body easypiechart-panel">
 						<div class="easypiechart" id="easypiechart-red" data-percent=<%=red%>><span class="percent"><%=red%>%</span></div>
 					</div>
@@ -178,7 +181,7 @@
 				<div <center></center>
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						Line Chart
+					Média de glicemia por mês
 						<ul class="pull-right panel-settings panel-button-tab-right">
 							<li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
 								<em class="fa fa-cogs"></em>
@@ -254,7 +257,7 @@
 			<div class="col-md-8">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						Pie Chart
+						Número de registos com um determinado valor de glicemia
 						<ul class="pull-right panel-settings panel-button-tab-right">
 							<li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
 								<em class="fa fa-cogs"></em>
@@ -544,12 +547,12 @@ var dadosPaciente = getJSON("https://web-eduardoferreira.c9users.io/readings_gli
 		var glicemia = data[object];
 		var date = glicemia.date_resg;
 		
-      		console.log('+++++++++++++++++++++++++++++++++++++++' +date);
+      	
 
 	
         var then = new Date(date);
         var month = then.getMonth() + 1;
-      
+        	console.log('+++++++++++++++++++++++++++++++++++++++' +      glicemia.glicemia);
 	if(glicemia.email == emails){
 		
 		if(month == 1){
@@ -575,6 +578,7 @@ var dadosPaciente = getJSON("https://web-eduardoferreira.c9users.io/readings_gli
 		} else if(month == 6){
 			jun ++;
 						gli_jun += glicemia.glicemia;
+						console.log(glicemia.glicemia);
 
 		} else if(month == 7){
 			jul ++;
